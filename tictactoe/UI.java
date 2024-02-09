@@ -50,9 +50,7 @@ public class UI {
             try {
                 System.out.printf(Constants.GET_ROW_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
                 row = scanner.nextInt();
-                if(row == scanner.next()){
-                    
-                }
+              
             } catch (Exception e) {
                 System.out.println(Constants.INVALID_ROW_OR_COLUMN);
             }

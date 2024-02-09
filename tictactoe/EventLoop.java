@@ -55,7 +55,8 @@ public class EventLoop {
                 if (state.isWinner()) {
                     if (state.getWhoseMove() == Constants.X) {
                         state.setGameState(Constants.X_WINS);
-                    } else {
+                    } 
+                    if(state.getWhoseMove() == Constants.O){
                         state.setGameState(Constants.O_WINS);
                     }
                 } else {

@@ -49,22 +49,26 @@ public class State
     }
 
     public boolean isWinner() {
-        for(int i=0; i<=Constants.BOARD_SIZE; ++i){ //for row 
-            int totalr= getBoardCell(i, 0) + getBoardCell(i, 1)+ getBoardCell(i, 2);
-            int total =getBoardCell(0, 0) + getBoardCell(1, 1)+ getBoardCell(2, 2);
-            int totalc= getBoardCell(0, i) + getBoardCell(1, i)+ getBoardCell(2, i);
-            if (totalr == -3 || total == 3){
-                return true; 
-            }
-            if (totalc == -3 || total == 3){
-                return true; 
+        for (int i = 0; i < Constants.BOARD_SIZE; ++i) { // for row
+            int totalr = getBoardCell(i, 0) + getBoardCell(i, 1) + getBoardCell(i, 2);
+            int totalc = getBoardCell(0, i) + getBoardCell(1, i) + getBoardCell(2, i);
+
+            // Check diagonals only once (i == 0)
+            if (i == 0) {
+                int totalDiagonal1 = getBoardCell(0, 0) + getBoardCell(1, 1) + getBoardCell(2, 2);
+                int totalDiagonal2 = getBoardCell(0, 2) + getBoardCell(1, 1) + getBoardCell(2, 0);
+
+                if (totalDiagonal1 == -3 || totalDiagonal1 == 3) {
+                    return true;
+                }
+                if (totalDiagonal2 == -3 || totalDiagonal2 == 3) {
+                    return true;
+                }
             }
 
-            if (total == -3 || total == 3){
-                return true; 
+            if (totalr == -3 || totalr == 3 || totalc == -3 || totalc == 3) {
+                return true;
             }
-            return false;
-
         }
         return false;
     }
